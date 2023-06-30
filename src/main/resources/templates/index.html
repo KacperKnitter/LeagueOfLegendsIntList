@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Int List</title>
+</head>
+<body>
+<div style="width: 15%; height: available; margin-top: 200px; margin-bottom:100px; border: black solid; float: left; text-align: center">
+    <a href="http://localhost:8080/index">search</a><br>
+    <a href="http://localhost:8080/criminalList">criminals list</a>
+</div>
+<div style="width: 80%; margin-top: 200px ;float: left; text-align: center">
+    <form action="#" th:action="@{/search}" th:object="${searchDto}" method="post">
+        <select th:field="*{server}">
+            <option th:value="'EUNE'" th:text="EUNE"></option>
+            <option th:value="'EUW'" th:text="EUW"></option>
+            <option th:value="'NA'" th:text="NA"></option>
+        </select>
+        <input type="text" th:field="*{summonerName}">
+        <input type="submit" value="Search">
+    </form>
+</div>
+</body>
+</html>

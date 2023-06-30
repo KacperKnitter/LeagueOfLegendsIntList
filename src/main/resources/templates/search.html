@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Int List</title>
+</head>
+<body>
+<div style="width: 15%; height: available; margin-top: 200px; margin-bottom:100px; border: black solid ; float: left">
+    <a href="http://localhost:8080/index">search</a>
+    <br>
+    <a href="http://localhost:8080/criminals">criminals list</a>
+</div>
+<div style="width: 80%; margin-top: 200px ;float: left; text-align: center; " >
+
+    <table th:each="match : ${listOfmatches}" style="table-border-color-dark: black; table-layout: fixed; width: 670px">
+        <colgroup>
+            <col style="width: 45px">
+            <col style="width: 140px">
+            <col style="width: 75px">
+            <col style="width: 320px">
+            <col style="width: 40px">
+            <col style="width: 45px">
+            <col style="width: 140px">
+            <col style="width: 75px">
+            <col style="width: 320px">
+            <col style="width: 40px">
+        </colgroup>
+        <thead>
+        <tr>
+            <th colspan="5">BLUE TEAM</th>
+            <th colspan="5">RED TEAM</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+              <img th:src="${match.playerDataDtos.get(0).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(0).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(0).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(0).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(0).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(0).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(0).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(0).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+            <td>
+              <img th:src="${match.playerDataDtos.get(5).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(5).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(5).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(5).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(5).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(5).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(5).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(5).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+              <img th:src="${match.playerDataDtos.get(1).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(1).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(1).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(1).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(1).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(1).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(1).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(1).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+            <td>
+              <img th:src="${match.playerDataDtos.get(6).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(6).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(6).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(6).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(6).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(6).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(6).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(6).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <img th:src="${match.playerDataDtos.get(2).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(2).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(2).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(2).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(2).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(2).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(2).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(2).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+            <td>
+              <img th:src="${match.playerDataDtos.get(7).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(7).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(7).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(7).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(7).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(7).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(7).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(7).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <img th:src="${match.playerDataDtos.get(3).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(3).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(3).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(3).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(3).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(3).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(3).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(3).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+            <td>
+              <img th:src="${match.playerDataDtos.get(8).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(8).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(8).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(8).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(8).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(8).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(8).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(8).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <img th:src="${match.playerDataDtos.get(4).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(4).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(4).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(4).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(4).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(4).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(4).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(4).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+            <td>
+              <img th:src="${match.playerDataDtos.get(9).championIconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(9).summonerName}"></span>
+            </td>
+            <td>
+                <span th:text="${match.playerDataDtos.get(9).kills}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(9).deaths}"></span>
+                <span>/</span>
+                <span th:text="${match.playerDataDtos.get(9).assists}"></span>
+            </td>
+            <td>
+                <img th:src="${match.playerDataDtos.get(9).item0IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item1IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item2IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item3IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item4IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item5IconLink}" style="width: 40px; height: 40px" >
+                <img th:src="${match.playerDataDtos.get(9).item6IconLink}" style="width: 40px; height: 40px" >
+            </td>
+            <td>
+                <form method="post" th:action="@{/addCriminal}" th:object="${criminalReport}">
+                    <select style="display: none" th:field="*{puuid}">
+                        <option th:value="${match.playerDataDtos.get(9).puuid}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{server}">
+                        <option th:value="${server}"></option>
+                    </select>
+                    <input   style="width: 30px; height: 30px; margin-bottom: 5px" type="submit" value="!">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
